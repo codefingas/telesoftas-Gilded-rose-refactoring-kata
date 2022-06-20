@@ -1,4 +1,5 @@
 import {Item} from "./item";
+import {updateQualityForAgedBrie} from "./updateQuality";
 
 export class GildedRose {
   items: Array<Item>;
@@ -8,6 +9,7 @@ export class GildedRose {
   }
 
   updateQuality():Item[] {
+    updateLoop:
     for (let i = 0; i < this.items.length; i++) {
       if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
         if (this.items[i].quality > 0) {
@@ -16,6 +18,10 @@ export class GildedRose {
           }
         }
       } else {
+        if (this.items[i].name == 'Aged Brie') { // adding method to manage updating AgedBrie
+          this.items[i] = updateQualityForAgedBrie(this.items[i]);
+          continue updateLoop;
+        }
         if (this.items[i].quality < 50) {
           this.items[i].quality = this.items[i].quality + 1
           if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {

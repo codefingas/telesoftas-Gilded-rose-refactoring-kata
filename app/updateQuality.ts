@@ -1,4 +1,4 @@
-import Item from "./item";
+import {Item} from "./item";
 
 const MAXIMUM_QUALITY = 50;
 const MINIMUM_QUALITY = 0;
@@ -9,7 +9,7 @@ const isOverMinimum = quality => quality > MINIMUM_QUALITY;
 const increaseQuality = quality => isLessThanMaximum(quality) ? quality + 1 : quality;
 const decreaseQuality = quality => isOverMinimum(quality) ? quality - 1 : quality;
 
-export const updateQualityForAgedBrie = (item): Item => {
+export const updateQualityForAgedBrie = (item: Item): Item => {
     item.quality = increaseQuality(item.quality);
     item.quality = item.sellIn < 0 ? increaseQuality(item.quality) : item.quality;
     item.sellIn -= 1;
