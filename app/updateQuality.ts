@@ -25,7 +25,7 @@ const increaseQualityForConcert = (item: Item): number => {
     return quality
 };
 
-export const updateQualityForConcert = (item) :Item => {
+export const updateQualityForConcert = (item: Item) :Item => {
     item.quality = item.sellIn === 0 ? 0 : increaseQualityForConcert(item);    
     item.sellIn -= 1
 
