@@ -34,7 +34,6 @@ export const updateQualityForConcert = (item: Item) :Item => {
 
 
 export const updateQualityForSulfuras = (item: Item) :Item => {
-    item.quality = item.quality;
-
-    return item
+    item.quality = 80;
+    return item;
 };
