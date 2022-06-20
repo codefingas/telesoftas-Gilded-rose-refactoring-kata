@@ -30,4 +30,11 @@ export const updateQualityForConcert = (item: Item) :Item => {
     item.sellIn -= 1
 
     return item;
-}
+};
+
+
+export const updateQualityForSulfuras = (item: Item) :Item => {
+    item.quality = item.quality;
+
+    return item
+};

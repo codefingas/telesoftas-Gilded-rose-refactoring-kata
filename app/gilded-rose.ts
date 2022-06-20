@@ -1,5 +1,5 @@
 import {Item} from "./item";
-import {updateQualityForAgedBrie, updateQualityForConcert} from "./updateQuality";
+import {updateQualityForAgedBrie, updateQualityForConcert, updateQualityForSulfuras} from "./updateQuality";
 
 export class GildedRose {
   items: Array<Item>;
@@ -29,7 +29,12 @@ export class GildedRose {
           continue updateLoop;
         };
 
-        
+        if (this.items[i].name == 'Sulfuras, Hand of Ragnaros') {
+          this.items[i] = updateQualityForSulfuras(this.items[i]);
+          continue updateLoop;
+        }
+
+
       }
 
       if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
