@@ -5,6 +5,7 @@
     "strict": true,
     "noImplicitAny": false,
     "sourceMap": false,
+    "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
       "@/*": [
