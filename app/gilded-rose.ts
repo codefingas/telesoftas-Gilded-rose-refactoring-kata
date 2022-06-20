@@ -1,5 +1,5 @@
 import {Item} from "./item";
-import {updateQualityForAgedBrie} from "./updateQuality";
+import {updateQualityForAgedBrie, updateQualityForConcert} from "./updateQuality";
 
 export class GildedRose {
   items: Array<Item>;
@@ -18,26 +18,20 @@ export class GildedRose {
           }
         }
       } else {
+
         if (this.items[i].name == 'Aged Brie') { // adding method to manage updating AgedBrie
           this.items[i] = updateQualityForAgedBrie(this.items[i]);
           continue updateLoop;
         }
-        if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1
-          if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
-            }
-            if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
-            }
-          }
-        }
+
+        if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') { // adding method to manange Concerts
+          this.items[i] = updateQualityForConcert(this.items[i]);
+          continue updateLoop;
+        };
+
+        
       }
+
       if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
         this.items[i].sellIn = this.items[i].sellIn - 1;
       }
