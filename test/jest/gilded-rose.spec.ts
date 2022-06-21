@@ -13,9 +13,17 @@ describe('Gilded Rose', () => {
 
 describe('pass basic quality rules', () => {
   it('should update quality after a day of sales', () => {
-    const { items: [{ quality, sellIn }] } = new GildedRose([new Item('bar', 0, 0)]);
+    const gildedRose = new GildedRose([new Item('bar', 1, 1)]);
+    const [{ quality, sellIn }] = gildedRose.updateQuality();
     expect(quality).toBe(0);
     expect(sellIn).toBe(0);
+  });
+
+  it("should degrade twice as fast once the sell by date has passed", () => {
+    const gildedRose = new GildedRose([new Item('bar', 0, 6)]);
+    const [{ quality, sellIn }] = gildedRose.updateQuality();
+    expect(sellIn).toBe(-1);
+    expect(quality).toBe(4);
   });
 
   
