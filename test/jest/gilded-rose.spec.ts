@@ -9,3 +9,14 @@ describe('Gilded Rose', () => {
     expect(item.quality).toBe(0);
   });
 });
+
+
+describe('pass basic quality rules', () => {
+  it('should update quality after a day of sales', () => {
+    const { items: [{ quality, sellIn }] } = new GildedRose([new Item('bar', 0, 0)]);
+    expect(quality).toBe(0);
+    expect(sellIn).toBe(0);
+  });
+
+  
+})
