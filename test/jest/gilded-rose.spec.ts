@@ -58,5 +58,10 @@ describe("Backstage passes", () => {
     expect(quality).toBe(4);
   });
 
-  
+  it("should increase by 2 when there are 10 days or less", () => {
+    const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 10, 3)]);
+    const [{quality, sellIn}] = gildedRose.updateQuality();
+    expect(sellIn).toBe(9);
+    expect(quality).toBe(5);
+  });
 })
