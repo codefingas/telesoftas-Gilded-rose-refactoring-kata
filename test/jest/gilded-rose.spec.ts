@@ -48,4 +48,15 @@ describe("Aged Brie Item", () => {
     expect(sellIn).toBe(0);
     expect(quality).toBe(50);
   });
+});
+
+describe("Backstage passes", () => {
+  it("should increase by 1 in quality at > 10 Sellin days", () => {
+    const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 12, 3)]);
+    const [{quality, sellIn}] = gildedRose.updateQuality();
+    expect(sellIn).toBe(11);
+    expect(quality).toBe(4);
+  });
+
+  
 })
