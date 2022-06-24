@@ -26,5 +26,19 @@ describe('pass basic quality rules', () => {
     expect(quality).toBe(4);
   });
 
-  
+  it("it's quality should never be negative", () => {
+    const gildedRose = new GildedRose([new Item('foo', 0, 0)]);
+    const [{quality, sellIn}] = gildedRose.updateQuality();
+    expect(sellIn).toBe(-1);
+    expect(quality).toBe(0);
+  });
+});
+
+describe("Aged Brie Item", () => {
+  it("should increase in quality the older it gets", () => {
+    const gildedRose = new GildedRose([new Item('Aged Brie', 1, 3)]);
+    const [{quality, sellIn}] = gildedRose.updateQuality();
+    expect(sellIn).toBe(0);
+    expect(quality).toBe(4);
+  })
 })
